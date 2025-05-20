@@ -83,16 +83,6 @@ curl -F "file=@test.jpg" http://localhost:30001/upload/
 
 ---
 
-## 🧠 Learnings
-This project helps you learn:
-- Kubernetes Deployments, Services, PVCs, ConfigMaps, Secrets
-- Container orchestration and scaling
-- FastAPI app deployment
-- Background task workers
-- Persistent storage management
-
----
-
 ## 🔗 License
 MIT License
 
