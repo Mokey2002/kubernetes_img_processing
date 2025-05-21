@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-api
+  namespace: image-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-api
+  template:
+    metadata:
+      labels:
+        app: image-api
+    spec:
+      containers:
+        - name: image-api
+          image: image-api:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secrets
+          volumeMounts:
+            - mountPath: /data/images
+              name: image-storage
+      volumes:
+        - name: image-storage
+          persistentVolumeClaim:
+            claimName: image-pvc
+

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: image-pipeline
+  labels:
+    app: image-pipeline
+data:
+  STORAGE_DIR: "/data/images"
+

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-worker
+  namespace: image-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-worker
+  template:
+    metadata:
+      labels:
+        app: image-worker
+    spec:
+      containers:
+        - name: image-worker
+          image: image-worker:latest
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secrets
+          volumeMounts:
+            - mountPath: /data/images
+              name: image-storage
+      volumes:
+        - name: image-storage
+          persistentVolumeClaim:
+            claimName: image-pvc
+
