@@ -80,6 +80,7 @@ curl -F "file=@test.jpg" http://localhost:30001/upload/
 - Add user authentication
 - Add Ingress for domain routing
 - Add Prometheus/Grafana for monitoring
+--add userinterface
 
 ---
 
